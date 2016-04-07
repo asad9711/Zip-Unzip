@@ -19,7 +19,6 @@ class Layout
 	// String[] fileNames;
 	JButton b;JLabel jl;
 	ArrayList<String> fileNames=new ArrayList<String>();
-
 	Layout()
 	{
 		f=new JFrame();
