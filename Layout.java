@@ -19,6 +19,7 @@ class Layout
 	// String[] fileNames;
 	JButton b;JLabel jl;
 	ArrayList<String> fileNames=new ArrayList<String>();
+
 	Layout()
 	{
 		f=new JFrame();
@@ -29,7 +30,7 @@ class Layout
 		jl=new JLabel();
 		jl.setFont(new Font("Arial", Font.PLAIN, 20));
         jl.setBounds(40,60,400,30);
-        jl.setOpaque(true);
+        
 		jl.setText("enter zip file name");
 		f.add(jl);
 		c=new JFileChooser();
@@ -54,19 +55,22 @@ class Layout
 				// sb.append(f[i].getAbsolutePath());
 				fileNames.add(f[i].getAbsolutePath());
 			}
-			for(int i=0;i<fileNames.size();i++)
-			{
-				System.out.println(fileNames.get(i));
-			}
+			// for(int i=0;i<fileNames.size();i++)
+			// {
+			// 	System.out.println(fileNames.get(i));
+			// }
 			// prompt();//calling to enter the zip file name
 
 			try{
 			// FileOutputStream fos=new FileOutputStream("zip.zip");
+				jl.setOpaque(true);
 			FileOutputStream fos=new FileOutputStream(tf.getText());
 
 			ZipOutputStream zos=new ZipOutputStream(fos);
 			for(int i=0;i<fileNames.size();i++)
 			{
+				FileInputStream fis=new FileInputStream(new File(fileNames.get(i)));
+                 ZipEntry zipEntry=new ZipEntry(fileName);
                  add(fileNames.get(i),zos);
 			}
 			
@@ -95,9 +99,6 @@ class Layout
 	{
 		new Layout();
 	}
-	public void prompt()
-	{
-
-	}
+	
 	
 }
